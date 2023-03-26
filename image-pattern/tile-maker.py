@@ -27,12 +27,18 @@ def tile_image(input_path, output_path, new_size):
     # Save the tiled image to the output path
     tiled_img.save(output_path)
 
-def process_images(input_dir, output_dir, new_size=1920):
+# image size is square 1024x1024 by default, 2 times that is 2048x2048
+def process_images(input_dir, output_dir, new_size=2048):
     # Ensure the output directory exists
     os.makedirs(output_dir, exist_ok=True)
 
+    progress = 0
+    total = len(os.listdir(input_dir))
+
     # Iterate through all the files in the input directory
     for filename in os.listdir(input_dir):
+        progress += 1
+        print(f"Processing image {progress} of {total}...", end="\r")
         input_path = os.path.join(input_dir, filename)
         output_path = os.path.join(output_dir, filename)
 
@@ -46,7 +52,7 @@ def process_images(input_dir, output_dir, new_size=1920):
 # Set your input and output directories
 input_dir = os.getenv('INPUT_DIR')
 output_dir =  os.getenv('OUTPUT_DIR')
-new_size = int(os.getenv('NEW_SIZE'), 1920)
+new_size = int(os.getenv('NEW_SIZE', 1920))
 
 # Process the images
 process_images(input_dir, output_dir, new_size)
