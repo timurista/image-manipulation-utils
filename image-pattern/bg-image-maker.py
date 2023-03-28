@@ -5,8 +5,8 @@ import textwrap
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
-total_width = 1920
-total_height = 1080
+total_width = 2000
+total_height = 1200
 
 def crop_center(img, crop_width, crop_height):
     img_width, img_height = img.size
@@ -24,8 +24,8 @@ def create_bg_image(bg_dir, num_images, output_path, title, tagline, title_font,
     images = [Image.open(path) for path in image_paths[:num_images]]
 
     # Calculate the width and height of each column
-    output_width = 1920
-    output_height = 1080
+    output_width = total_width
+    output_height = total_height
     column_width = output_width // num_images
 
     # Crop the images from the center to fit the column dimensions

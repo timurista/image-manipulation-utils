@@ -55,7 +55,7 @@ def process_images(input_folder, outfolder):
     print("Done")
 
 # Set your input folder path
-input_folder = os.getenv('OUTPUT_DIR')
+input_folder = os.getenv('INPUT_DIR')
 outfolder = os.getenv('OUT_FOLDER_DIR')
 
 # Process the images
